@@ -68,6 +68,7 @@ public class SceneManagerController : MonoBehaviour
         }
 
         onLoadScene?.Invoke();
+        onLoadScene = null;
     } 
     
     private IEnumerator FadeCoroutine(float targetTime, Color targetColor){
@@ -81,7 +82,9 @@ public class SceneManagerController : MonoBehaviour
 
             foreground.color = Color.Lerp(imageColor, targetColor, t);
         }
-        
+        imageColor = foreground.color;
+
         onFade?.Invoke();
+        onFade = null;
     }
 }
